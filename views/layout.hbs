@@ -6,6 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+  <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
+    <div class="max-w-700 center wrap-float">
+      <nav class="clearfix mar-b-1">
+        <ul class="no-bullets no-margin no-padding right">
+          {{!-- {{#if user}}
+          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+          <li class="pipe-separate t-light-green left">{{user.login}}</li>
+          <li class="pipe-separate t-light-green left"><a href="/auth/logout">logout</a></li>
+          {{else}} --}}
+          <li class="pipe-separate t-light-green left"><a href="/auth/register">register</a></li>
+          <li class="pipe-separate t-light-green left"><a href="/auth/login">login</a></li>
+          <li class="pipe-separate t-light-green left"><a href="/auth/personalArea">Личный кабинет курьера</a></li>
+          {{!-- {{/if}} --}}
+          
+          
+        </ul>
+      </nav>
+
+      <div class="logo-container">
+      
+
+      </div>
+    </div>
+  </header>
 <body>
   {{{body}}}
 </body>
