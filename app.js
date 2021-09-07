@@ -3,11 +3,12 @@ const express = require('express');
 
 const logger = require('morgan');
 const path = require('path');
-
 // Импортируем созданный в отдельный файлах рутеры.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth.router');
 
 const app = express();
 const PORT = 3000;
@@ -44,6 +45,9 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(cookieParser());
+
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
   console.log(`server started PORT: ${PORT}`);
