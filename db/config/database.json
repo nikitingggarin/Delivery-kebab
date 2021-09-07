@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "elbrus",
-    "password": "elbrus",
-    "database": "database_development",
+    "username": "alexey",
+    "password": "alexey",
+    "database": "Kebab",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
