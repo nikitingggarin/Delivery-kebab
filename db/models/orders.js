@@ -18,10 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     customer_id: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     courier_id: {
       type: DataTypes.TEXT,
@@ -36,10 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     original_price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     discount_price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     customer_location: {
       type: DataTypes.TEXT,

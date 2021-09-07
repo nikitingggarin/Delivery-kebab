@@ -9,7 +9,7 @@ module.exports = {
       },
       customer_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       courier_id: {
         type: Sequelize.INTEGER,
@@ -24,10 +24,10 @@ module.exports = {
         allowNull: false,
       },
       original_price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       discount_price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       customer_location: {
         type: Sequelize.TEXT,

@@ -1,24 +1,23 @@
 <h2 class="centrReg">Вход</h2>
 {{#if error}}
 <div class="centrReg">{{error}}</div>
- <br />
+<br />
 {{/if}}
 <form class="centrReg" name="loginForm" method="POST" action="/auth/login">
   <label>
     Email
     <br />
-    <input type="email" name="email" />
+    <input type="email" name="email">
   </label>
   <br />
 
-  <label>
+  <label for="password">
     Пароль
     <br />
-    <input type="password" name="password" />
+    <input type="password" name="password" id="password">
   </label>
   <br />
   <br />
-  
+
   <button type="submit">Войти</button>
 </form>
-

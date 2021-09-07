@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
   <title>Document</title>
 </head>
-  <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
-    <div class="max-w-700 center wrap-float">
-      <nav class="clearfix mar-b-1">
-        <ul class="no-bullets no-margin no-padding right">
-          {{!-- {{#if user}}
-          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
-          <li class="pipe-separate t-light-green left">{{user.login}}</li>
-          <li class="pipe-separate t-light-green left"><a href="/auth/logout">logout</a></li>
-          {{else}} --}}
-          <li class="pipe-separate t-light-green left"><a href="/auth/register">register</a></li>
-          <li class="pipe-separate t-light-green left"><a href="/auth/login">login</a></li>
-          <li class="pipe-separate t-light-green left"><a href="/auth/personalArea">Личный кабинет курьера</a></li>
-          {{!-- {{/if}} --}}
-          
-          
-        </ul>
-      </nav>
+<header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
+  <div class="max-w-700 center wrap-float">
+    <nav class="clearfix mar-b-1">
+      <ul class="no-bullets no-margin no-padding right">
+        {{#if user}}
+        <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+        <li class="pipe-separate t-light-green left">{{user.login}}</li>
+        <li class="pipe-separate t-light-green left"><a href="/auth/logout">logout</a></li>
+        {{#if courier}}
+        <li class="pipe-separate t-light-green left"><a href="/courier">кабинет курьера</a></li>
+        {{/if}}
+        {{else}}
+        <li class="pipe-separate t-light-green left"><a href="/auth/register">register</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/auth/login">login</a></li>
+        {{/if}}
 
-      <div class="logo-container">
-      
+      </ul>
 
-      </div>
-    </div>
-  </header>
+
+  </div>
+  </div>
+</header>
+
 <body>
   {{{body}}}
 </body>
+
 </html>
