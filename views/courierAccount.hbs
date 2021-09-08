@@ -14,47 +14,7 @@
 </form>
 
 
-<table id="tableCour">
-  {{!-- <th> --}}
-  <td>
-    title
-  </td>
-  <td>
-    picture
-  </td>
-  <td>
-    original price
-  </td>
-  <td>
-    discounted price
-  </td>
-  <td>
-    discounted price
-  </td>
 
-  {{#each allOrders}}
-  <tr>
-    <td>
-      {{this.title}}
-    </td>
-    <td>
-      <img src="{{this.picture}}" width="200" alt="">
-    </td>
-    <td>
-      {{this.original_price}}
-    </td>
-    <td>
-      {{this.discount_price}}
-    </td>
-    <td>
-      {{this.customer.phone}}
-    </td>
-    <td>
-      <button data-id="{{this.id}}">Доставка выполнена</button>
-    </td>
-    {{/each}}
-  </tr>
-</table>
 
 
 
@@ -79,7 +39,7 @@
         <td>₽ {{this.original_price}}</td>
         <td>₽ {{this.discount_price}}</td>
         <td>
-          {{this.User.phone}}
+          {{this.customer.phone}}
         </td>
         <td>
           <button type="button" class="btn btn-outline-success btn-sm" data-id="{{this.id}}">Доставка выполнена</button>
