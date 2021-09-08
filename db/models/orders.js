@@ -49,6 +49,9 @@ module.exports = (sequelize, DataTypes) => {
     courier_location: {
       type: DataTypes.TEXT,
     },
+    take_order: {
+      type: DataTypes.BOOLEAN,
+    },
   }, {
     sequelize,
     timestamps: false,
