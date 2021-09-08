@@ -2,16 +2,23 @@
 
 <script defer src="/courier.js"></script>
 
-<div>вы зашли в личный кабинет</div>
+<div class="d-flex justify-content-center mb-3 text-secondary"><h4>личный кабинет</h4></div>
 
-<form action="/courier" method="POST">
-
-  <input type="text" placeholder="title" name="title">
-  <input type="text" placeholder="pictureURL" name="picture">
-  <input type="text" placeholder="original price" name="original_price">
-  <input type="text" placeholder="discount price" name="discount_price">
-  <button type="submit">Submit</button>
-</form>
+<div class="accForm d-flex justify-content-center">
+  <form name="loginForm" method="POST" action="/courier" class="d-flex justify-content-center">
+    <div>
+      <div class="mb-3">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="title" name="title">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="pictureURL" name="picture">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="original price" name="original_price">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="discount price" name="discount_price">
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-outline-info">Submit</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+</div>
 
 
 
