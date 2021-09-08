@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Orders } = require('../db/models')
+const { Orders, User } = require('../db/models')
 
 router.get('/', async (req, res) => {
 
@@ -15,10 +15,24 @@ router.get('/', async (req, res) => {
     res.locals.user = req.session.user;
   };
 
-  const allOrders = await Orders.findAll();
-  console.log(allOrders)
+  const allOrders = await Orders.findAll({ where: { customer_id: null } });
+
 
   res.render('index', { allOrders });
 });
+
+router.patch('/', async (req, res) => {
+  try {
+    console.log(req.session.user.id)
+    const updatedOrder = await Orders.update({ customer_id: Number(req.session.user.id) }, { where: { id: req.body.orderId } })
+    console.log(updatedOrder)
+    return res.sendStatus(200).end()
+  } catch (err) {
+    console.log(err)
+    return res.sendStatus(500).end()
+  }
+
+
+})
 
 module.exports = router;
