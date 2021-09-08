@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { Orders } = require('../db/models')
+const { Orders, User } = require('../db/models');
+const { Op } = require("sequelize");
 
 router.route('/')
-  .get((req, res) => {
+  .get(async (req, res) => {
     if (req.session.customer) {
       res.locals.customer = req.session.customer;
     };
@@ -14,7 +15,17 @@ router.route('/')
     if (req.session.user) {
       res.locals.user = req.session.user;
     };
-    res.render('courierAccount');
+    const allOrders = await Orders.findAll({
+      include: [{ model: User }],
+      where: {
+        customer_id: {
+          [Op.ne]: null
+        }
+      }
+    });
+
+    console.log(allOrders[0]['User.phone']);
+    res.render('courierAccount', { allOrders });
   })
 
   .post(async (req, res) => {

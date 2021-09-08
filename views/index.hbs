@@ -1,7 +1,9 @@
+<script defer src="/main.js"></script>
+
 <div>{{massege}}</div>
 
 
-<table>
+<table id="table">
   {{!-- <th> --}}
   <td>
     title
@@ -25,13 +27,13 @@
       <img src="{{this.picture}}" width="200" alt="">
     </td>
     <td>
-      {{original_price}}
+      {{this.original_price}}
     </td>
     <td>
       {{this.discount_price}}
     </td>
-       <td>
-      <button>заказать</button>
+    <td>
+      <button data-id="{{this.id}}">заказать</button>
     </td>
     {{/each}}
   </tr>
