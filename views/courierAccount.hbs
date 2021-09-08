@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/courierAccount.css">
+
 <script defer src="/courier.js"></script>
 
 <div class="d-flex justify-content-center mb-3 text-secondary"><h4>личный кабинет</h4></div>
@@ -19,48 +20,41 @@
   </form>
 </div>
 
+
+
+
+
+
 {{#if allOrders}}
+<div class="tableDiv">
+  <table class="table table-hover" id="tableCour">
+    <thead>
+      <tr>
+        <th scope="col"> </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each allOrders}}
+      <tr>
+        <th class="firstCell" scope="row">{{this.title}}</th>
+        <td> <img src="{{this.picture}}" width="100" alt=""></td>
+        <td>₽ {{this.original_price}}</td>
+        <td>₽ {{this.discount_price}}</td>
+        <td>
+          {{this.customer.phone}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-success btn-sm" data-id="{{this.id}}">Доставка выполнена</button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-<table id="tableCour">
-  {{!-- <th> --}}
-  <td>
-    title
-  </td>
-  <td>
-    picture
-  </td>
-  <td>
-    original price
-  </td>
-  <td>
-    discounted price
-  </td>
-  <td>
-    discounted price
-  </td>
-
-  {{#each allOrders}}
-  <tr>
-    <td>
-      {{this.title}}
-    </td>
-    <td>
-      <img src="{{this.picture}}" width="200" alt="">
-    </td>
-    <td>
-      {{this.original_price}}
-    </td>
-    <td>
-      {{this.discount_price}}
-    </td>
-    <td>
-      {{this.User.phone}}
-    </td>
-    <td>
-      <button data-id="{{this.id}}">Доставка выполнена</button>
-    </td>
-    {{/each}}
-  </tr>
-</table>
-
+</div>
 {{/if}}

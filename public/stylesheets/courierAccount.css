@@ -9,3 +9,17 @@ form{
 form input{
   margin-bottom: 0.3rem;
 }
+
+
+.tableDiv{
+  width:85%;
+  margin-left: 80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tableDiv td, .firstCell{
+  text-align: left;
+  vertical-align: middle;
+
+}
