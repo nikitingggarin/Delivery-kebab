@@ -10,10 +10,20 @@ module.exports = {
       customer_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+        },
       },
       courier_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+        },
       },
       title: {
         type: Sequelize.TEXT,
