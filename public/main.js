@@ -1,5 +1,5 @@
 const table = document.getElementById('table');
-const tableCour = document.getElementById('tableCour')
+
 
 table.addEventListener('click', async (e) => {
   if (e.target.tagName === 'BUTTON') {
@@ -19,6 +19,4 @@ table.addEventListener('click', async (e) => {
 
 })
 
-tableCour.table.addEventListener('click', async (e) => {
-  console.log('found it')
-})
+
