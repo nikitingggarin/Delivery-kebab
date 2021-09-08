@@ -1,1 +1,35 @@
 <div>{{massege}}</div>
+
+
+<table>
+  <th>
+  <td>
+    title
+  </td>
+  <td>
+    picture
+  </td>
+  <td>
+    original price
+  </td>
+  <td>
+    discounted price
+  </td>
+  </th>
+  {{#each allOrders}}
+  <tr>
+    <td>
+      {{this.title}}
+    </td>
+    <td>
+      <img src="{{this.picture}}" alt="">
+    </td>
+    <td>
+      {{original_price}}
+    </td>
+    <td>
+      {{this.discount_price}}
+    </td>
+    {{/each}}
+  </tr>
+</table>
