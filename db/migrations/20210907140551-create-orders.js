@@ -35,6 +35,9 @@ module.exports = {
       courier_location: {
         type: Sequelize.TEXT,
       },
+      take_order: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
