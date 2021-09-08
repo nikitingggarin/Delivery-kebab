@@ -1,40 +1,34 @@
 <script defer src="/main.js"></script>
 
-<div>{{massege}}</div>
+<link rel="stylesheet" href="/stylesheets/index.css">
 
 
-<table id="table">
-  {{!-- <th> --}}
-  <td>
-    title
-  </td>
-  <td>
-    picture
-  </td>
-  <td>
-    original price
-  </td>
-  <td>
-    discounted price
-  </td>
-  {{!-- </th> --}}
-  {{#each allOrders}}
-  <tr>
-    <td>
-      {{this.title}}
-    </td>
-    <td>
-      <img src="{{this.picture}}" width="200" alt="">
-    </td>
-    <td>
-      {{this.original_price}}
-    </td>
-    <td>
-      {{this.discount_price}}
-    </td>
-    <td>
-      <button data-id="{{this.id}}">заказать</button>
-    </td>
-    {{/each}}
-  </tr>
-</table>
+
+<div class="tableDiv">
+  <table class="table table-hover" id="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th class="firstCell" scope="col">без скидки</th>
+        <th class="firstCell" scope="col">со скидкой</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each allOrders}}
+      <tr>
+        <th class="firstCell" scope="row">{{this.title}}</th>
+        <td> <img src="{{this.picture}}" width="100" alt=""></td>
+        <td>₽ {{this.original_price}}</td>
+        <td>₽ {{this.discount_price}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-success btn-sm" data-id="{{this.id}}">заказать</button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>
