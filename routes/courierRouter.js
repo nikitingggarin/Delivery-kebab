@@ -20,11 +20,12 @@ router.route('/')
       where: {
         customer_id: {
           [Op.ne]: null
-        }
+        },
+        take_order: null
       }
     });
 
-    console.log(allOrders[0]['User.phone']);
+
     res.render('courierAccount', { allOrders });
   })
 

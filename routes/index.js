@@ -31,8 +31,18 @@ router.patch('/', async (req, res) => {
     console.log(err)
     return res.sendStatus(500).end()
   }
+})
 
-
+router.put('/', async (req, res) => {
+  try {
+    console.log(req.session.user.id)
+    const updatedOrder = await Orders.update({ take_order: true }, { where: { id: req.body.orderId } })
+    console.log(updatedOrder)
+    return res.sendStatus(200).end()
+  } catch (err) {
+    console.log(err)
+    return res.sendStatus(500).end()
+  }
 })
 
 module.exports = router;
