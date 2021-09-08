@@ -2,7 +2,7 @@
 
 
 <table>
-  <th>
+  {{!-- <th> --}}
   <td>
     title
   </td>
@@ -15,14 +15,14 @@
   <td>
     discounted price
   </td>
-  </th>
+  {{!-- </th> --}}
   {{#each allOrders}}
   <tr>
     <td>
       {{this.title}}
     </td>
     <td>
-      <img src="{{this.picture}}" alt="">
+      <img src="{{this.picture}}" width="200" alt="">
     </td>
     <td>
       {{original_price}}
