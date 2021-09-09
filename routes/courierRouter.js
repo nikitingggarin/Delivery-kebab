@@ -41,7 +41,7 @@ router.route('/')
     const newOrder = await Orders.create({
       courier_id, title, picture, original_price, discount_price,
     });
-    console.log(newOrder);
+    // console.log(newOrder);
     res.redirect('/');
   });
 
