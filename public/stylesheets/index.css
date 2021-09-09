@@ -1,0 +1,31 @@
+
+
+.tableDiv{
+  width:85%;
+  margin-left: 100px;
+  
+}
+
+
+.tableDiv td, .firstCell{
+  text-align: left;
+  vertical-align: middle;
+
+}
+
+.tableDiv th{
+  font-size: small;
+  font-weight: 500;
+  text-align: left;
+  vertical-align: middle;
+}
+
+h1{
+  text-align: center;
+
+}
+
+#map {
+  height: 300px;
+  width: 800px;
+}

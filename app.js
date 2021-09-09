@@ -7,8 +7,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.router');
+const courierRouter = require('./routes/courierRouter');
 
 const app = express();
 // const PORT = 3000;
@@ -36,7 +38,7 @@ app.use(express.json());
 const sessionConfig = {
   store: new FileStore(),
   name: 'user_sid', // Имя куки для хранения id сессии. По умолчанию - connect.sid
-  secret: process.env.SESSION_SECRETS.split(','),
+  secret: 'notaverygoodsecrethonestlyspeaking',
   resave: false, // Пересохранять ли куку при каждом запросе
   saveUninitialized: false, // Создавать ли сессию без инициализации ключей в req.session
   cookie: {
@@ -49,6 +51,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/courier', courierRouter);
 
 app.listen(PORT, () => {
   console.log(`server started PORT: ${PORT}`);

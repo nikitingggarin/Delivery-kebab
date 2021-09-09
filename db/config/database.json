@@ -2,7 +2,7 @@
   "development": {
     "username": "elbrus",
     "password": "elbrus",
-    "database": "database_development",
+    "database": "kebab",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
