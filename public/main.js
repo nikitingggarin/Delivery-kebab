@@ -9,6 +9,8 @@ table.addEventListener('click', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ orderId }),
     });
+    // const email = await response.json();
+    // console.log(email);
     if (response.ok) {
       window.location.href = 'http://localhost:3000';
     }
