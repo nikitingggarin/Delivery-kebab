@@ -11,7 +11,8 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.router');
 
 const app = express();
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Сообщаем express, что в качестве шаблонизатора используется "hbs".
 app.set('view engine', 'hbs');
