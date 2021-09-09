@@ -25,7 +25,7 @@
     </thead>
     <tbody>
       {{#each allOrders}}
-      <tr>
+      <tr id = 'b{{this.id}}'>
         <th class="firstCell" scope="row">{{this.title}}</th>
         <td> <img src="{{this.picture}}" width="100" alt=""></td>
         <td>₽ {{this.original_price}}</td>
