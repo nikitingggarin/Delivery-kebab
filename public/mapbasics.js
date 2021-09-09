@@ -1,4 +1,4 @@
-const button = document.getElementById('position')
+const button = document.getElementById('position');
 let arr;
 let myMap;
 
@@ -6,11 +6,10 @@ let myMap;
 ymaps.ready(init);
 
 async function init() {
-
   myMap = new ymaps.Map('map', {
 
     center: arr,
-    zoom: 14
+    zoom: 14,
   });
 
   // const response = await fetch('/marks');
@@ -23,35 +22,30 @@ async function init() {
   myGeoObject = new ymaps.GeoObject({
     // Описание геометрии.
     geometry: {
-      type: "Point",
-      coordinates: [51.529607, 46.064844699999995]
+      type: 'Point',
+      coordinates: arr,
     },
     // Свойства.
     properties: {
       // Контент метки.
-      iconContent: 'Вы'
-    }
+      iconContent: 'Вы',
+    },
   }, {
     // Опции.
     // Иконка метки будет растягиваться под размер ее содержимого.
     preset: 'islands#blackStretchyIcon',
     // Метку можно перемещать.
-    draggable: false
-  })
+    draggable: false,
+  });
 
-  myMap.geoObjects.add(myGeoObject)
-
+  myMap.geoObjects.add(myGeoObject);
 }
 
 window.addEventListener('load', (e) => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
+    navigator.geolocation.getCurrentPosition((position) => {
       arr = [position.coords.latitude, position.coords.longitude];
-      console.log(position.coords.latitude, position.coords.longitude)
-      return;
-    })
+      console.log(position.coords.latitude, position.coords.longitude);
+    });
   }
-})
-
-
-
+});
