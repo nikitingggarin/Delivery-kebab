@@ -13,6 +13,41 @@ router
     const {
       login, email, password, phone, type_user,
     } = req.body;
+    if (!login || !email || !password || !phone || !type_user) {
+      const error = { message: 'Поля не могут быть пустыми' };
+      return res.status(400).json({ error });
+    }
+    let emailError;
+    try {
+      emailError = await db.User.findOne({
+        raw: true,
+        where: {
+          email,
+        },
+      });
+    } catch (error) {
+      return res.status(401).json({ error });
+    }
+    if (emailError) {
+      const error = { message: 'Пользователь с таким email уже зарегистрирован' };
+      return res.status(400).json({ error });
+    }
+    let loginError;
+    try {
+      loginError = await db.User.findOne({
+        raw: true,
+        where: {
+          login,
+        },
+      });
+    } catch (error) {
+      return res.status(401).json({ error });
+    }
+    if (loginError) {
+      const error = { message: 'Пользователь с таким login уже зарегистрирован' };
+      return res.status(400).json({ error });
+    }
+
     const saltRounds = process.env.SALT_ROUNDS ?? 10;
     // const rawPassword = req.body.password;
 
@@ -35,7 +70,9 @@ router
         req.session.customer = { id: user.id, login: user.login };
       }
     }
-    res.redirect('/');
+
+    // return res.redirect('/');
+    return res.status(201).json({ link: '/' });
     // res.json({ message: 'OK' });
   });
 
@@ -60,10 +97,29 @@ router
         } else {
           req.session.customer = { id: user.id, login: user.login };
         }
-        res.redirect('/');
-      } else {
-        res.render('login', { error: 'логин или пароль не совпадает' });
+        // res.redirect('/');
+        return res.status(201).json({ link: '/' });
       }
+      const error = { message: 'Адрес электронной почты или пароль не совпадает' };
+      return res.status(400).json({ error });
+
+      // res.render('login', { error: 'логин или пароль не совпадает' });
+    }
+    let emailError;
+    try {
+      emailError = await db.User.findOne({
+        raw: true,
+        where: {
+          email,
+        },
+      });
+    } catch (error) {
+      return res.status(401).json({ error });
+    }
+
+    if (!emailError) {
+      const error = { message: 'Адрес электронной почты или пароль не совпадает' };
+      return res.status(400).json({ error });
     }
   });
 

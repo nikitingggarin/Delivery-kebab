@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +8,20 @@
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/normalize.css">
   <link rel="stylesheet" href="/stylesheets/application.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-
-  <title>Document</title>
+  <script defer src="/application.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Delivery-kebab</title>
 </head>
+<body>
 <header >
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light lehinBar bg-light bg-gradient">
       <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand text-info" href="#">Delivery-kebab</a>
+        <a class="navbar-brand text-info" href="/">Delivery-kebab</a>
         <div class="" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item d-flex">
@@ -31,7 +30,7 @@
                 <a class="nav-link text-info">{{user.login}}</a>
                 <a class="nav-link text-info" href="/auth/logout">logout</a>
               {{#if courier}}
-                <a class="nav-link text-info" href="/courier">кабинет курьера</a>
+                <a class="nav-link text-info" href="/courier">Личный кабинет</a>
               {{/if}}
               {{else}}
                 <a class="nav-link text-info" href="/auth/register">register</a>
@@ -41,13 +40,10 @@
           </ul>
         </div>
       </div>
-  </nav>
-  
+  </nav> 
 </header>
 {{!-- role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white" --}}
 
-
-<body>
   {{{body}}}
 </body>
 
