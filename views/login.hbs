@@ -1,23 +1,19 @@
-<h2 class="centrReg">Вход</h2>
-{{#if error}}
-<div class="centrReg">{{error}}</div>
-<br />
-{{/if}}
-<form class="centrReg" name="loginForm" method="POST" action="/auth/login">
-  <label>
-    Email
-    <br />
-    <input type="email" name="email">
-  </label>
-  <br />
-
-  <label for="password">
-    Пароль
-    <br />
-    <input type="password" name="password" id="password">
-  </label>
-  <br />
-  <br />
-
-  <button type="submit">Войти</button>
-</form>
+<div class="loginForm">
+  <form name="loginForm" method="POST" action="/auth/login" class="d-flex justify-content-center">
+    <div>
+      <div class="mb-3 mt-3">
+        <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
+        <input placeholder="email" name="email" type="email" class="form-control w-100 p-2" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">Мы никогда никому не передадим вашу электронную почту</div>
+    </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+        <input placeholder="Password" name="password" type="password" class="form-control w-100 p-2" id="exampleInputPassword1">
+      </div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-info">Войти</button>
+      </div>
+      <div class="error d-flex justify-content-center mt-3"></div>
+    </div>
+  </form>
+</div>

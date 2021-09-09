@@ -7,9 +7,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.router');
-const courierRouter = require('./routes/courierRouter')
+const courierRouter = require('./routes/courierRouter');
 
 const app = express();
 const PORT = 3000;
@@ -49,7 +50,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/courier', courierRouter)
+app.use('/courier', courierRouter);
 
 app.listen(PORT, () => {
   console.log(`server started PORT: ${PORT}`);

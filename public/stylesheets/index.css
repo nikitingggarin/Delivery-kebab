@@ -20,6 +20,11 @@
   vertical-align: middle;
 }
 
+h1{
+  text-align: center;
+
+}
+
 #map {
   height: 300px;
   width: 800px;

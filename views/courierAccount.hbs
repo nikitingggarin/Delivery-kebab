@@ -2,20 +2,23 @@
 
 <script defer src="/courier.js"></script>
 
-<div>вы зашли в личный кабинет</div>
+<div class="d-flex justify-content-center mb-3 mt-3 text-secondary"><h4>Личный кабинет</h4></div>
 
-<form action="/courier" method="POST">
-
-  <input type="text" placeholder="title" name="title">
-  <input type="text" placeholder="pictureURL" name="picture">
-  <input type="text" placeholder="original price" name="original_price">
-  <input type="text" placeholder="discount price" name="discount_price">
-  <button type="submit">Submit</button>
-</form>
-
-
-
-
+<div class="accForm d-flex justify-content-center">
+  <form name="accForm" method="POST" action="/courier" class="d-flex justify-content-center">
+    <div>
+      <div class="mb-3">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Наименование" name="title">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Фото" name="picture">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Цена без скидки" name="original_price">
+        <input class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Цена со скидкой" name="discount_price">
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-outline-info">Submit</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+</div>
 
 {{#if allOrders}}
 <div class="tableDiv">
@@ -38,10 +41,11 @@
         <td>₽ {{this.original_price}}</td>
         <td>₽ {{this.discount_price}}</td>
         <td>
-          {{this.User.phone}}
+          {{this.customer.phone}}
         </td>
         <td>
-          <button type="button" class="btn btn-outline-success btn-sm" data-id="{{this.id}}">Доставка выполнена</button>
+          <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">Доставка выполнена</button>
+          {{!-- <button type="button" class="btn btn-outline-success btn-sm" data-id="{{this.id}}">Доставка выполнена</button> --}}
         </td>
       </tr>
       {{/each}}
