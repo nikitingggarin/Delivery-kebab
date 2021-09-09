@@ -1,6 +1,15 @@
 const table = document.getElementById('table');
 
 
+
+
+
+
+
+
+
+
+
 table.addEventListener('click', async (e) => {
   if (e.target.tagName === 'BUTTON') {
     const orderId = e.target.dataset.id
