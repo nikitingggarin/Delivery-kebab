@@ -26,6 +26,8 @@ h1{
 }
 
 #map {
-  height: 300px;
-  width: 800px;
+  margin-top: 5px;
+  margin-left: 10px;
+  height: 250px;
+  width: 100%;
 }

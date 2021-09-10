@@ -1,9 +1,34 @@
 const tableCour = document.getElementById('tableCour');
+const orderForm = document.forms.accForm;
+
+let courier_location;
+
+window.addEventListener('load', async (e) => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      courier_location = `${position.coords.latitude}, ${position.coords.longitude}`;
+    })
+  }
+
+})
+
+orderForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const dataFromForm = Object.fromEntries(new FormData(e.target));
+  dataFromForm.courier_location = courier_location;
+  const response = await fetch('/courier', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+    body: JSON.stringify(dataFromForm)
+  });
+  if (response.ok) {
+    window.location.href = 'http://localhost:3000/';
+  }
+})
 
 tableCour.addEventListener('click', async (e) => {
   if (e.target.tagName === 'BUTTON') {
     const orderId = e.target.dataset.id;
-
     const response = await fetch('/', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
