@@ -10,13 +10,25 @@ router.put('/:id/edit', async (req, res) => {
       original_price: req.body.original_price,
       discount_price: req.body.discount_price,
     },
-    { where: { id: req.body.editIdOrder } });
+      { where: { id: req.body.editIdOrder } });
+
+    for await (obj of req.session.allOrders) {
+      if (obj.id === req.body.editIdOrder) {
+
+        obj.title = req.body.title;
+        obj.picture = req.body.picture;
+        obj.original_price = req.body.original_price;
+        obj.discount_price = req.body.discount_price
+      }
+    }
+
+
+    return res.sendStatus(200).end();
   } catch (err) {
     console.log(err);
     // res.redirect('/');
     return res.sendStatus(500).end();
   }
-  return res.sendStatus(200).end();
 });
 router.get('/:id/edit', async (req, res) => {
   console.log(req.params);
@@ -42,7 +54,7 @@ router.get('/', async (req, res) => {
 
   if (req.session.allOrders) {
     res.locals.allOrders = req.session.allOrders;
-    console.log(res.locals.allOrders);
+
 
     if (req.session.allOrders.length === 0) { isTrueRaw = false; }
   } else {
@@ -51,6 +63,7 @@ router.get('/', async (req, res) => {
     if (allOrders.length === 0) { isTrueRaw = false; }
   }
 
+  console.log(res.locals.allOrders);
   res.render('index', { isTrueRaw });
 });
 router.delete('/', async (req, res) => {

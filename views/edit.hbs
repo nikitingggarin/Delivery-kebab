@@ -1,21 +1,29 @@
-    <link rel="stylesheet" href="/stylesheets/courierAccount.css">
+<script src="https://api-maps.yandex.ru/2.1?apikey=6aa51172-eb31-4e02-bf61-a9da1d9858d4&lang=ru_RU"
+  type="text/javascript">
+  </script>
 
-    <script defer src="/main.js"></script>
 
-    <div>
-      <div class="mb-3">
-        {{#each editOrder}}
-        <input id ="titleEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Наименование" name="title" value="{{this.title}}">
-        <input id ="pictureEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Фото" name="picture" value="{{this.picture}}">
-        <input id ="original_priceEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Цена без скидки"
-          name="original_price" value="{{this.original_price}}">
-        <input id ="discount_priceEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Цена со скидкой"
-          name="discount_price" value="{{this.discount_price}}">
-        {{/each}}
-        <div class="d-flex justify-content-center">
-          {{#each editOrder}}
-          {{!-- <a href="/"><button id ="editBtn" data-id="c{{this.id}}" type="submit" class="btn btn-outline-info">Принять изменения</button></a> --}}
-          <button id ="editBtn" data-id="c{{this.id}}" type="submit" class="btn btn-outline-info">Принять изменения</button>
-          {{/each}}
-        </div>
-      </div>
+<link rel="stylesheet" href="/stylesheets/courierAccount.css">
+
+<script defer src="/main.js"></script>
+
+<div>
+  <div class="mb-3">
+    {{#each editOrder}}
+    <input id="titleEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Наименование"
+      name="title" value="{{this.title}}">
+    <input id="pictureEdit" class="form-control w-100 p-2 bg-info text-body" type="text" placeholder="Фото"
+      name="picture" value="{{this.picture}}">
+    <input id="original_priceEdit" class="form-control w-100 p-2 bg-info text-body" type="text"
+      placeholder="Цена без скидки" name="original_price" value="{{this.original_price}}">
+    <input id="discount_priceEdit" class="form-control w-100 p-2 bg-info text-body" type="text"
+      placeholder="Цена со скидкой" name="discount_price" value="{{this.discount_price}}">
+    {{/each}}
+    <div class="d-flex justify-content-center">
+      {{#each editOrder}}
+      {{!-- <a href="/"><button id="editBtn" data-id="c{{this.id}}" type="submit" class="btn btn-outline-info">Принять
+          изменения</button></a> --}}
+      <button id="editBtn" data-id="c{{this.id}}" type="submit" class="btn btn-outline-info">Принять изменения</button>
+      {{/each}}
+    </div>
+  </div>
