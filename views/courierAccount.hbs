@@ -1,12 +1,16 @@
 <link rel="stylesheet" href="/stylesheets/courierAccount.css">
 
 <script defer src="/courier.js"></script>
+<script src="https://api-maps.yandex.ru/2.1?apikey=6aa51172-eb31-4e02-bf61-a9da1d9858d4&lang=ru_RU"
+  type="text/javascript">
+  </script>
+<script defer src="/mapbasics.js" type="text/javascript"></script>
 
 <div class="d-flex justify-content-center mb-3 mt-3 text-secondary">
   <h4>Личный кабинет</h4>
 </div>
 
-<div class="accForm d-flex justify-content-center">
+<div id="form" class="accForm d-flex justify-content-center">
   <form name="accForm" method="POST" action="/courier" class="d-flex justify-content-center">
     <div>
       <div class="mb-3">
@@ -41,7 +45,7 @@
     </thead>
     <tbody>
       {{#each allOrders}}
-      <tr id = 'a{{this.id}}'>
+      <tr id='a{{this.id}}'>
         <th class="firstCell" scope="row">{{this.title}}</th>
         <td> <img src="{{this.picture}}" width="100" alt=""></td>
         <td>₽ {{this.original_price}}</td>
@@ -58,7 +62,7 @@
       {{/each}}
     </tbody>
   </table>
- {{else}}
+  {{else}}
   <H1 class="text-info">Пока нет доступных заказов</H1>
   {{/if}}
 </div>
