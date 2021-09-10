@@ -90,7 +90,7 @@ async function fetchMap() {
           }
         });
       }
-    }
+    
       async function gettingCoords(array, center) {
         const dist = [];
         for await (object of array) {
@@ -134,7 +134,7 @@ async function fetchMap() {
       }
     }
   }
-
+}
 
 /// /////////////////событие, которое загружает карту/////////
 
