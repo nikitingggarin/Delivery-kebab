@@ -21,7 +21,8 @@ async function fetchMap2() {
     async function init() {
       const dataFromBack = await response.json();
       for (i = 0; i < dataFromBack.length; i++) {
-        const arr = dataFromBack[i].courier_location.split();
+        const arr = dataFromBack[i].courier_location
+        // .split();
         dataFromBack[i].courier_location = arr.map((el) => Number(el));
       }
       /// //////////////////построение маршрута и вычисление расстояния/////////////////////
@@ -48,7 +49,7 @@ async function fetchMap2() {
               body: JSON.stringify(objMulRoutes),
             });
             if (response.ok) {
-              window.location.href = 'http://localhost:3000/';
+              window.location.href = 'https://delivery-kebab.herokuapp.com/';
               result = true;
             }
           }
@@ -66,7 +67,8 @@ async function fetchMap() {
     async function init() {
       const dataFromBack = await response.json();
       for (i = 0; i < dataFromBack.length; i++) {
-        const arr = dataFromBack[i].courier_location.split();
+        const arr = dataFromBack[i].courier_location
+        .split(',');
         dataFromBack[i].courier_location = arr.map((el) => Number(el));
       }
       myMap = await new ymaps.Map('map', {

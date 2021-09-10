@@ -95,7 +95,7 @@ async function fetchMap2() {
               body: JSON.stringify(objMulRoutes),
             });
             if (response.ok) {
-              window.location.href = 'http://localhost:3000/';
+              window.location.href = 'https://delivery-kebab.herokuapp.com/';
               result = true;
             }
           }
