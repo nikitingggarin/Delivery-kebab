@@ -2,6 +2,7 @@ const button = document.getElementById('position');
 let arr;
 const tableDiv = document.querySelector('.tableDiv');
 
+
 tableDiv.addEventListener('click', async (e) => {
   if (e.target.tagName === 'BUTTON') {
     if (navigator.geolocation) {
@@ -11,7 +12,9 @@ tableDiv.addEventListener('click', async (e) => {
     }
     await fetchMap2();
   }
+
 });
+
 async function fetchMap2() {
   const response = await fetch('/marks');
   let result = false;
@@ -21,8 +24,10 @@ async function fetchMap2() {
     async function init() {
       const dataFromBack = await response.json();
       for (i = 0; i < dataFromBack.length; i++) {
-        const arr = dataFromBack[i].courier_location.split(',');
-        dataFromBack[i].courier_location = arr.map((el) => Number(el));
+
+        let arr1 = dataFromBack[i].courier_location.split(',')
+        dataFromBack[i].courier_location = arr1.map(el => Number(el))
+
       }
       /// //////////////////построение маршрута и вычисление расстояния/////////////////////
       const objMulRoutes = {};
@@ -118,7 +123,10 @@ async function fetchMap() {
             object.courier_location,
           ],
         });
-        const thenum = await multiRoute.model.events.add('requestsuccess', async (length) => {
+
+
+        await multiRoute.model.events.add('requestsuccess', async (length) => {
+
           const distance = await multiRoute.getActiveRoute().properties.get('distance').text;
           obj[Math.random()] = await distance;
           objMulRoutes[Math.random()] = await obj;
