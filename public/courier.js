@@ -21,7 +21,7 @@ orderForm.addEventListener('submit', async (e) => {
     body: JSON.stringify(dataFromForm),
   });
   if (response.ok) {
-    window.location.href = 'http://delivery-kebab.herokuapp.com//';
+    window.location.href = 'http://delivery-kebab.herokuapp.com/';
   }
 });
 
