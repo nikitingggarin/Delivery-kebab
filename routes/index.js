@@ -51,6 +51,9 @@ router.get('/', async (req, res) => {
   if (req.session.user) {
     res.locals.user = req.session.user;
   }
+  if (!req.session.user) {
+    res.locals.notuser = !req.session.user;
+  }
 
   if (req.session.allOrders) {
     res.locals.allOrders = req.session.allOrders;
