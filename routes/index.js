@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
 
   if (req.session.allOrders) {
     res.locals.allOrders = req.session.allOrders
+    console.log(res.locals.allOrders)
     if (req.session.allOrders.length === 0) { isTrueRaw = false; }
   } else {
     const allOrders = await Orders.findAll({ where: { customer_id: null } });
@@ -115,7 +116,7 @@ router.post('/order', async (req, res) => {
     })
 
     req.session.allOrders = allOrders;
-
+    console.log(req.body)
     return res.sendStatus(200).end();
   } catch (err) {
     console.log(err)

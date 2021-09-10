@@ -19,23 +19,22 @@
         <th scope="col"></th>
         <th class="firstCell" scope="col">без скидки</th>
         <th class="firstCell" scope="col">со скидкой</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
         <th scope="col">расстояние</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       {{#each allOrders}}
-      <tr id = 'b{{this.id}}'>
+      <tr id='b{{this.id}}'>
         <th class="firstCell" scope="row">{{this.title}}</th>
         <td> <img src="{{this.picture}}" width="100" alt=""></td>
         <td>₽ {{this.original_price}}</td>
         <td>₽ {{this.discount_price}}</td>
         <td>
-          <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
+          {{this.distanceString}}
         </td>
         <td>
-          {{this.distanceString}}
+          <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
         </td>
       </tr>
       {{/each}}
