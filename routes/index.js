@@ -19,6 +19,7 @@ router.put('/:id/edit', async (req, res) => {
   return res.sendStatus(200).end();
 });
 router.get('/:id/edit', async (req, res) => {
+  console.log(req.params);
   const editOrder = await Orders.findAll({ where: { id: req.params.id } });
   const oneEditOrder = editOrder;
   console.log(oneEditOrder);
@@ -40,9 +41,8 @@ router.get('/', async (req, res) => {
   }
 
   if (req.session.allOrders) {
-
-    res.locals.allOrders = req.session.allOrders
-    console.log(res.locals.allOrders)
+    res.locals.allOrders = req.session.allOrders;
+    console.log(res.locals.allOrders);
 
     if (req.session.allOrders.length === 0) { isTrueRaw = false; }
   } else {
@@ -147,7 +147,7 @@ router.post('/order', async (req, res) => {
     allOrders.sort((a, b) => a.distance - b.distance);
 
     req.session.allOrders = allOrders;
-    console.log(req.body)
+    console.log(req.body);
     return res.sendStatus(200).end();
   } catch (err) {
     console.log(err);
