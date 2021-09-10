@@ -29,8 +29,10 @@ router.route('/')
       },
     });
     console.log(res.locals.user.id);
+    let isTrueRaw = true;
+    if (allOrders.length === 0) { isTrueRaw = false; }
     // console.log(allOrders[0].customer);
-    res.render('courierAccount', { allOrders });
+    res.render('courierAccount', { allOrders, isTrueRaw });
   })
 
   .post(async (req, res) => {

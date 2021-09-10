@@ -32,6 +32,9 @@ router.patch('/', async (req, res) => {
   try {
     console.log(req.session.user.id);
     const customer = await User.findOne({ where: { id: req.session.user.id } });
+    const idCourierOrders = await Orders.findOne({ where: { id: req.body.orderId } });
+    const courier = await User.findOne({ where: { id: idCourierOrders.courier_id } });
+    const courierEmail = courier.email;
     const updatedOrder = await Orders.update({ customer_id: Number(req.session.user.id) },
       { where: { id: req.body.orderId } });
     const { email } = customer;
@@ -53,7 +56,7 @@ router.patch('/', async (req, res) => {
     // формируем сообщение для courier
     const mailСourier = {
       from: 'elbrusmailgoogl@gmail.com',
-      to: email,
+      to: courierEmail,
       subject: 'пора на работу',
       text: 'У вас есть заказ',
     };

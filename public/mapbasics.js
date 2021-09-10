@@ -1,7 +1,8 @@
-const button = document.getElementById('position')
+const button = document.getElementById('position');
 let arr;
 
 // Дождёмся загрузки API и готовности DOM.
+
 
 async function fetchMap() {
   const response = await fetch('/marks');
@@ -149,6 +150,5 @@ async function fetchMap() {
         }
         await fetchMap();
       })
-
 
 
