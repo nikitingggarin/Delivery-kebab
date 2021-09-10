@@ -19,25 +19,48 @@
         <th scope="col"></th>
         <th class="firstCell" scope="col">без скидки</th>
         <th class="firstCell" scope="col">со скидкой</th>
+        <th scope="col"></th>
+
         <th scope="col">расстояние</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
+          {{#if customer}}
       {{#each allOrders}}
       <tr id='b{{this.id}}'>
         <th class="firstCell" scope="row">{{this.title}}</th>
         <td> <img src="{{this.picture}}" width="100" alt=""></td>
         <td>₽ {{this.original_price}}</td>
         <td>₽ {{this.discount_price}}</td>
+  
+        <td>
+          <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
+        </td>
         <td>
           {{this.distanceString}}
+        </td>
+      </tr>
+      {{/each}}
+          {{else}}
+       {{#each allOrders}}
+      <tr id = 'b{{this.id}}'>
+        <th class="firstCell" scope="row">{{this.title}}</th>
+        <td> <img src="{{this.picture}}" width="100" alt=""></td>
+        <td>₽ {{this.original_price}}</td>
+        <td>₽ {{this.discount_price}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
+          <button type="button" class="btn btn-outline-info" data-idDel="{{this.id}}">удалить</button>
+          <a href="/{{this.id}}/edit"> <button type="button" class="btn btn-outline-info" data-idEd="{{this.id}}">редактировать</button></a>
+
         </td>
         <td>
           <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
         </td>
       </tr>
       {{/each}}
+          {{/if}}
     </tbody>
   </table>
   {{else}}

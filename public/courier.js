@@ -5,12 +5,11 @@ let courier_location;
 
 window.addEventListener('load', async (e) => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
+    navigator.geolocation.getCurrentPosition((position) => {
       courier_location = `${position.coords.latitude}, ${position.coords.longitude}`;
-    })
+    });
   }
-
-})
+});
 
 orderForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -19,7 +18,7 @@ orderForm.addEventListener('submit', async (e) => {
   const response = await fetch('/courier', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
-    body: JSON.stringify(dataFromForm)
+    body: JSON.stringify(dataFromForm),
   });
   if (response.ok) {
     if (navigator.geolocation) {
@@ -29,7 +28,7 @@ orderForm.addEventListener('submit', async (e) => {
     }
     await fetchMap2();
   }
-})
+});
 
 if (tableCour) {
   tableCour.addEventListener('click', async (e) => {
