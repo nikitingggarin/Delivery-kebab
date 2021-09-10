@@ -21,8 +21,7 @@ async function fetchMap2() {
     async function init() {
       const dataFromBack = await response.json();
       for (i = 0; i < dataFromBack.length; i++) {
-        const arr = dataFromBack[i].courier_location
-        // .split();
+        const arr = dataFromBack[i].courier_location.split(',');
         dataFromBack[i].courier_location = arr.map((el) => Number(el));
       }
       /// //////////////////построение маршрута и вычисление расстояния/////////////////////
@@ -67,8 +66,7 @@ async function fetchMap() {
     async function init() {
       const dataFromBack = await response.json();
       for (i = 0; i < dataFromBack.length; i++) {
-        const arr = dataFromBack[i].courier_location
-        .split(',');
+        const arr = dataFromBack[i].courier_location.split(',');
         dataFromBack[i].courier_location = arr.map((el) => Number(el));
       }
       myMap = await new ymaps.Map('map', {
