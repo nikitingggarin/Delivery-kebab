@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "ilkhom",
-    "password": "me1980",
-    "database": "kebab",
+    "username": "alexey",
+    "password": "alexey",
+    "database": "Kebab",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -14,10 +14,14 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "elbrus",
-    "password": "elbrus",
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
   }
+    
+  
 }
