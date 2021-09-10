@@ -21,6 +21,7 @@
         <th class="firstCell" scope="col">со скидкой</th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col">расстояние</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,9 @@
         <td>₽ {{this.discount_price}}</td>
         <td>
           <button type="button" class="btn btn-outline-info" data-id="{{this.id}}">заказать</button>
+        </td>
+        <td>
+          {{this.distanceString}}
         </td>
       </tr>
       {{/each}}

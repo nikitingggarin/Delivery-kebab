@@ -36,15 +36,16 @@ router.route('/')
   })
 
   .post(async (req, res) => {
-    const courier_id = req.session.user.id;
-    const {
-      title, picture, original_price, discount_price,
-    } = req.body;
-    const newOrder = await Orders.create({
-      courier_id, title, picture, original_price, discount_price,
-    });
-    // console.log(newOrder);
-    res.redirect('/');
+    try {
+      const { title, picture, original_price, discount_price, courier_location } = req.body;
+      const courier_id = req.session.courier.id;
+      const newOrder = await Orders.create({ title, picture, original_price, discount_price, courier_location, courier_id });
+      return res.sendStatus(200).end();
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(500).end();
+    }
+
   });
 
 module.exports = router;
