@@ -2,6 +2,30 @@ const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const { Orders, User } = require('../db/models');
 
+router.put('/:id/edit', async (req, res) => {
+  try {
+    await Orders.update({
+      title: req.body.title,
+      picture: req.body.picture,
+      original_price: req.body.original_price,
+      discount_price: req.body.discount_price,
+    },
+    { where: { id: req.body.editIdOrder } });
+  } catch (err) {
+    console.log(err);
+    // res.redirect('/');
+    return res.sendStatus(500).end();
+  }
+  return res.sendStatus(200).end();
+});
+router.get('/:id/edit', async (req, res) => {
+  console.log(req.params);
+  const editOrder = await Orders.findAll({ where: { id: req.params.id } });
+  const oneEditOrder = editOrder;
+  console.log(oneEditOrder);
+  res.render('edit', { editOrder });
+});
+
 router.get('/', async (req, res) => {
   let isTrueRaw = true;
   if (req.session.customer) {
@@ -17,9 +41,8 @@ router.get('/', async (req, res) => {
   }
 
   if (req.session.allOrders) {
-
-    res.locals.allOrders = req.session.allOrders
-    console.log(res.locals.allOrders)
+    res.locals.allOrders = req.session.allOrders;
+    console.log(res.locals.allOrders);
 
     if (req.session.allOrders.length === 0) { isTrueRaw = false; }
   } else {
@@ -30,7 +53,16 @@ router.get('/', async (req, res) => {
 
   res.render('index', { isTrueRaw });
 });
-
+router.delete('/', async (req, res) => {
+  console.log('jhvv', req.body.orderId);
+  try {
+    await Orders.destroy({ where: { id: req.body.orderId } });
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500).end();
+  }
+  return res.sendStatus(200).end();
+});
 router.patch('/', async (req, res) => {
   try {
     console.log(req.session.user.id);
@@ -115,7 +147,7 @@ router.post('/order', async (req, res) => {
     allOrders.sort((a, b) => a.distance - b.distance);
 
     req.session.allOrders = allOrders;
-    console.log(req.body)
+    console.log(req.body);
     return res.sendStatus(200).end();
   } catch (err) {
     console.log(err);
