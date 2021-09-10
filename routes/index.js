@@ -17,11 +17,11 @@ router.get('/', async (req, res) => {
   }
 
   if (req.session.allOrders) {
-    res.locals.allOrders = req.session.allOrders
+    res.locals.allOrders = req.session.allOrders;
     if (req.session.allOrders.length === 0) { isTrueRaw = false; }
   } else {
     const allOrders = await Orders.findAll({ where: { customer_id: null } });
-    res.locals.allOrders = allOrders
+    res.locals.allOrders = allOrders;
     if (allOrders.length === 0) { isTrueRaw = false; }
   }
 
@@ -83,44 +83,39 @@ router.put('/', async (req, res) => {
   }
 });
 
-
 router.get('/marks', async (req, res) => {
   try {
     const allOrders = await Orders.findAll({ where: { customer_id: null } });
     return res.json(allOrders);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-})
+});
 
 router.post('/order', async (req, res) => {
   try {
-    let distances = [];
+    const distances = [];
     const arr = Object.values(await req.body);
     for await (obj of arr) {
-      distances.push(Object.values(obj))
+      distances.push(Object.values(obj));
     }
     const allOrders = await Orders.findAll({ where: { customer_id: null }, raw: true });
     for await (order of allOrders) {
       for (let i = 0; i < distances.length; i++) {
         if (order.id === distances[i][0]) {
-          let thenum = distances[i][1].replace(/\D+/g, '')
-          order.distance = Number(thenum)
-          order.distanceString = distances[i][1]
+          const thenum = distances[i][1].replace(/\D+/g, '');
+          order.distance = Number(thenum);
+          order.distanceString = distances[i][1];
         }
       }
     }
-    allOrders.sort((a, b) => {
-      return a.distance - b.distance
-    })
+    allOrders.sort((a, b) => a.distance - b.distance);
 
     req.session.allOrders = allOrders;
 
     return res.sendStatus(200).end();
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-
-
-})
+});
 module.exports = router;
